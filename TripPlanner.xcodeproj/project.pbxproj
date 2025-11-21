@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6C46703B2ED067E400965DEF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6C46703A2ED067E400965DEF /* FirebaseAnalytics */; };
+		6C46703D2ED067E400965DEF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6C46703C2ED067E400965DEF /* FirebaseAuth */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		6C4670092ED05C2F00965DEF /* TripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C46703B2ED067E400965DEF /* FirebaseAnalytics in Frameworks */,
+				6C46703D2ED067E400965DEF /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,8 @@
 			);
 			name = TripPlanner;
 			packageProductDependencies = (
+				6C46703A2ED067E400965DEF /* FirebaseAnalytics */,
+				6C46703C2ED067E400965DEF /* FirebaseAuth */,
 			);
 			productName = TripPlanner;
 			productReference = 6C4670092ED05C2F00965DEF /* TripPlanner.app */;
@@ -107,6 +116,9 @@
 			);
 			mainGroup = 6C4670002ED05C2F00965DEF;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6C4670392ED065C300965DEF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6C46700A2ED05C2F00965DEF /* Products */;
 			projectDirPath = "";
@@ -341,6 +353,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6C4670392ED065C300965DEF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6C46703A2ED067E400965DEF /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C4670392ED065C300965DEF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		6C46703C2ED067E400965DEF /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C4670392ED065C300965DEF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6C4670012ED05C2F00965DEF /* Project object */;
 }
