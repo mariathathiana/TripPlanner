@@ -23,7 +23,7 @@ class SignInViewController: UIViewController {
         let email = usernameTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             
             if let error = error {
                 print(error.localizedDescription)
@@ -31,8 +31,13 @@ class SignInViewController: UIViewController {
             }
             
             print("User signed in successfully")
+            
+            self.performSegue(withIdentifier: "Navigate To Home", sender: nil)
+
         }
         
     }
+    
+   
     
 }
