@@ -14,6 +14,12 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if Auth.auth().currentUser != nil {
+            self.performSegue(withIdentifier: "Navigate To Home", sender: nil)
+        } else {
+           //
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -36,6 +42,14 @@ class SignInViewController: UIViewController {
 
         }
         
+    }
+    
+    
+    
+    @IBAction func signInWithGoogle(_ sender: Any) {
+    
+        
+      
     }
     
    

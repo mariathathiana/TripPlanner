@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24128" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="85d-Af-u4f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24128" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="950"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t0v-z1-MAZ">
-                                <rect key="frame" x="0.0" y="172" width="393" height="710"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t0v-z1-MAZ">
+                                <rect key="frame" x="0.0" y="172" width="393" height="778"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyz-ts-7J9" userLabel="Scroll Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="1000"/>
@@ -54,7 +54,7 @@
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vY-oZ-jbt">
                                                 <rect key="frame" x="206" y="386" width="179" height="35"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Forgot my password"/>
                                             </button>
@@ -108,7 +108,10 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" systemColor="systemPinkColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" title="Google"/>
+                                                <buttonConfiguration key="configuration" style="tinted" image="Google" title="Google"/>
+                                                <connections>
+                                                    <action selector="signInWithGoogle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GwH-b8-MYn"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0Y-sz-vbi">
                                                 <rect key="frame" x="62" y="655" width="274" height="35"/>
@@ -116,7 +119,7 @@
                                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" title="Apple"/>
+                                                <buttonConfiguration key="configuration" style="tinted" image="Apple" title="Apple"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJN-4O-A3X">
                                                 <rect key="frame" x="62" y="698" width="274" height="35"/>
@@ -124,7 +127,7 @@
                                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <color key="tintColor" systemColor="labelColor"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="tinted" title="Facebook"/>
+                                                <buttonConfiguration key="configuration" style="tinted" image="Facebook" title="Facebook"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0E-dp-e9S">
                                                 <rect key="frame" x="119" y="420" width="160" height="35"/>
@@ -133,7 +136,6 @@
                                                 <buttonConfiguration key="configuration" style="filled" title="Sign In"/>
                                                 <connections>
                                                     <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QTY-WC-xSs"/>
-                                                    <segue destination="YZv-60-oHt" kind="show" identifier="Navigate to Home" id="XJt-Iw-mzg"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -155,11 +157,13 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <keyboardLayoutGuide key="keyboard" id="y9f-YY-Avj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t0v-z1-MAZ" secondAttribute="trailing" id="8i9-vp-7HW"/>
                             <constraint firstItem="t0v-z1-MAZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Cdf-B0-hPr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="t0v-z1-MAZ" secondAttribute="bottom" id="PdX-MB-RRS"/>
+                            <constraint firstItem="y9f-YY-Avj" firstAttribute="top" secondItem="t0v-z1-MAZ" secondAttribute="bottom" id="Xqz-wz-c0a"/>
                             <constraint firstItem="t0v-z1-MAZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wCZ-pS-gNT"/>
                         </constraints>
                     </view>
@@ -168,6 +172,7 @@
                     <connections>
                         <outlet property="passwordTextField" destination="J0o-Nl-riI" id="PoR-NR-ijw"/>
                         <outlet property="usernameTextField" destination="FFC-Oe-rAU" id="6He-vk-I5J"/>
+                        <segue destination="YZv-60-oHt" kind="show" identifier="Navigate To Home" id="xjo-PM-4vy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -188,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="prn-ub-FR4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="673" y="801"/>
+            <point key="canvasLocation" x="676" y="906"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="dEx-RW-Vfm">
@@ -358,12 +363,13 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kSu-Vq-v4j"/>
+                        <keyboardLayoutGuide key="keyboard" id="N1I-bZ-IeH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="PI4-o6-MZT" firstAttribute="top" secondItem="kSu-Vq-v4j" secondAttribute="top" id="5cF-m8-VkQ"/>
                             <constraint firstItem="PI4-o6-MZT" firstAttribute="leading" secondItem="kSu-Vq-v4j" secondAttribute="leading" id="Tja-54-K1a"/>
                             <constraint firstItem="PI4-o6-MZT" firstAttribute="trailing" secondItem="kSu-Vq-v4j" secondAttribute="trailing" id="aXd-Iy-ruC"/>
-                            <constraint firstItem="kSu-Vq-v4j" firstAttribute="bottom" secondItem="PI4-o6-MZT" secondAttribute="bottom" id="f5I-Hi-zCT"/>
+                            <constraint firstItem="N1I-bZ-IeH" firstAttribute="top" secondItem="PI4-o6-MZT" secondAttribute="bottom" id="f5I-Hi-zCT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" id="kqL-kA-y4i"/>
@@ -380,7 +386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePT-6v-tof" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1364" y="131"/>
+            <point key="canvasLocation" x="1362.5954198473282" y="130.98591549295776"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="s0y-Tv-Dgz">
@@ -403,6 +409,9 @@
     </scenes>
     <color key="tintColor" systemColor="systemBlueColor"/>
     <resources>
+        <image name="Apple" width="24" height="24"/>
+        <image name="Facebook" width="24" height="24"/>
+        <image name="Google" width="24" height="24"/>
         <image name="person.crop.rectangle" catalog="system" width="128" height="93"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -36,10 +36,12 @@ class SignUpViewController: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 print(error.localizedDescription)
+                self.showMessage(message: error.localizedDescription)
                 return
             }
             
             print("User created account successfully")
+            self.showMessage(title: "Create account", message: "Account created successfully")
             
         }
         
