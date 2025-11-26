@@ -9,6 +9,8 @@ import UIKit
 import FirebaseAuth
 import FirebaseCore
 import GoogleSignIn
+import FirebaseAuth
+import FirebaseFirestore
 
 class SignInViewController: UIViewController {
     
@@ -21,10 +23,7 @@ class SignInViewController: UIViewController {
         
         if Auth.auth().currentUser != nil {
             self.performSegue(withIdentifier: "Navigate To Home", sender: nil)
-        } else {
-           //
         }
-        // Do any additional setup after loading the view.
     }
     
         
@@ -32,11 +31,14 @@ class SignInViewController: UIViewController {
     @IBAction func signIn(_ sender: Any) {
         let email = usernameTextField.text ?? ""
         let password = passwordTextField.text ?? ""
+      
+        
         
         Auth.auth().signIn(withEmail: email, password: password) { [unowned self] authResult, error in
             
             if let error = error {
                 print(error.localizedDescription)
+                self.showMessage(message:error.localizedDescription)
                 return
             }
             
@@ -71,7 +73,7 @@ class SignInViewController: UIViewController {
 
           let credential = GoogleAuthProvider.credential(withIDToken: idToken,accessToken: user.accessToken.tokenString)
             
-            Auth.auth().signIn(with: credential) { [unowned self] result, error in
+            Auth.auth().signIn(with: credential) { [unowned self] authResult, error in
                 if let error = error {
                     print(error.localizedDescription)
                     self.showMessage(message:error.localizedDescription)
@@ -80,8 +82,46 @@ class SignInViewController: UIViewController {
                 
                 print("User signed in successfully")
                 
-                self.performSegue(withIdentifier: "Navigate To Home", sender: nil)
-              // At this point, our user is signed in
+                Task {
+                    let userId = authResult!.user.uid
+                    
+                    let db = Firestore.firestore()
+                    let docReference = db.collection("Users").document(userId)
+                    
+                    do {
+                        let document = try await docReference.getDocument()
+                        if !document.exists {
+                            let email = googleUser.profile?.email ?? authResult!.user.email!
+                            let firstName = googleUser.profile?.givenName ?? ""
+                            let lastName = googleUser.profile?.familyName ?? ""
+                            let gender = 2
+                            
+                            let user = User(id: userId, firstName: firstName, lastName: lastName, email: email, gender: gender, birthDate: nil)
+                            DispatchQueue.main.async {
+                                do {
+                                    let db = Firestore.firestore()
+                                    try db.collection("Users").document(userId).setData(from: user)
+                                } catch let error {
+                                   print("Error writing user to Firestore: \(error)")
+                                   DispatchQueue.main.async {
+                                       self.showMessage(message: error.localizedDescription)
+                                   }
+                                   return
+                               }
+                            }
+                        }
+                    } catch let error {
+                        print("Error writing user to Firestore: \(error)")
+                        DispatchQueue.main.async {
+                            self.showMessage(message: error.localizedDescription)
+                        }
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "Navigate To Home", sender: nil)
+                    }
+                }
             }
                 
 
@@ -91,7 +131,20 @@ class SignInViewController: UIViewController {
         
       
     }
-    
+    @IBAction func resetPassword(_ sender: Any){
+        let email = usernameTextField.text ?? ""
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if let error = error {
+                print(error.localizedDescription)
+                self.showMessage(message:error.localizedDescription)
+                return
+            }
+            self.showMessage(message: "Password reset link sent to your email")
+            
+        }
+        
+        
+    }
    
     
 }
