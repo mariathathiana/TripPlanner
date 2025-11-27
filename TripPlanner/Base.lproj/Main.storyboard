@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -194,9 +195,113 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="New trip" image="plus.circle" catalog="system" selectedImage="plus.circle.fill" id="xlM-Y3-p0s"/>
+                    <connections>
+                        <segue destination="f4E-7a-yBZ" kind="show" id="ACK-by-UaT"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-121" y="2008"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="zT1-Ry-E8D">
+            <objects>
+                <viewController id="f4E-7a-yBZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hEe-hg-HAW">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="drM-TH-S23"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PgT-ja-Nlc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hig-c1-lMJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-121" y="2750"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XRR-zf-zXb">
+            <objects>
+                <viewController id="Ma2-ME-GhJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="52a-9E-b8I">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="lMf-mG-oM9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rBF-5D-mG5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Go8-yK-3fN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="633" y="2750"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="p2T-Kd-Ets">
+            <objects>
+                <viewController id="A9U-2e-fRa" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6Qn-e7-9dN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QXl-QT-X9Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1440" y="2750"/>
+        </scene>
+        <!--Places-->
+        <scene sceneID="jof-xh-1ek">
+            <objects>
+                <viewController id="g44-ra-WSB" customClass="MapViewController" customModule="TripPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F7c-XN-YDy">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsUserLocation="YES" showsUserTrackingButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KLr-dA-Ree">
+                                <rect key="frame" x="0.0" y="172" width="393" height="358"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KLr-dA-Ree" secondAttribute="height" multiplier="393:358" id="zxK-oD-ODU"/>
+                                </constraints>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="m3z-pG-pP2">
+                                <rect key="frame" x="0.0" y="530" width="393" height="174"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SiteCell" rowHeight="50" id="Mty-on-K3O">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mty-on-K3O" id="wPh-A8-Ah3">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="g44-ra-WSB" id="6yl-MZ-0oh"/>
+                                    <outlet property="delegate" destination="g44-ra-WSB" id="SBe-8c-vps"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vI6-S8-nTF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KLr-dA-Ree" firstAttribute="leading" secondItem="vI6-S8-nTF" secondAttribute="leading" id="BFN-cm-hJQ"/>
+                            <constraint firstItem="KLr-dA-Ree" firstAttribute="trailing" secondItem="vI6-S8-nTF" secondAttribute="trailing" id="Gdj-JS-Jol"/>
+                            <constraint firstItem="KLr-dA-Ree" firstAttribute="top" secondItem="vI6-S8-nTF" secondAttribute="top" id="KJo-MW-jOg"/>
+                            <constraint firstItem="m3z-pG-pP2" firstAttribute="top" secondItem="KLr-dA-Ree" secondAttribute="bottom" id="ULh-qp-65G"/>
+                            <constraint firstItem="vI6-S8-nTF" firstAttribute="bottom" secondItem="KLr-dA-Ree" secondAttribute="bottom" constant="205" id="Vvl-c0-cAS"/>
+                            <constraint firstItem="m3z-pG-pP2" firstAttribute="leading" secondItem="vI6-S8-nTF" secondAttribute="leading" id="WXf-qV-1Ld"/>
+                            <constraint firstItem="m3z-pG-pP2" firstAttribute="trailing" secondItem="vI6-S8-nTF" secondAttribute="trailing" id="dV8-lG-cbZ"/>
+                            <constraint firstItem="vI6-S8-nTF" firstAttribute="bottom" secondItem="m3z-pG-pP2" secondAttribute="bottom" constant="31" id="uoc-d7-oGr"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Saved Places" image="arrow.down.heart.fill" catalog="system" selectedImage="arrow.down.heart.fill" id="HCp-qP-f8Z"/>
+                    <navigationItem key="navigationItem" title="Places" id="zhy-lo-2Pg"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="KLr-dA-Ree" id="vxp-FL-Dkn"/>
+                        <outlet property="tableView" destination="m3z-pG-pP2" id="8cc-kv-tRm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TGO-3y-HnG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1890.8396946564885" y="1339.4366197183099"/>
         </scene>
         <!--Settings-->
         <scene sceneID="rt5-aF-atz">
@@ -221,6 +326,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gear.circle" catalog="system" selectedImage="gear.circle.fill" id="QWQ-ZF-pBd"/>
                     <navigationItem key="navigationItem" id="N1O-Dj-GcF"/>
+                    <connections>
+                        <segue destination="A9U-2e-fRa" kind="show" id="sYG-56-3pZ"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1413" y="2008"/>
@@ -237,6 +345,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="My trips" image="airplane.circle.fill" catalog="system" selectedImage="airplane.circle.fill" id="pth-ky-BCy"/>
+                    <connections>
+                        <segue destination="Ma2-ME-GhJ" kind="show" id="2rb-R9-YwK"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="610" y="2008"/>
@@ -258,6 +369,7 @@
                         <segue destination="Ame-oz-ayF" kind="relationship" relationship="viewControllers" id="8zC-YT-rCf"/>
                         <segue destination="46G-9q-LQw" kind="relationship" relationship="viewControllers" id="eJR-Yj-vYH"/>
                         <segue destination="vAI-RE-qq6" kind="relationship" relationship="viewControllers" id="hh6-bp-okF"/>
+                        <segue destination="g44-ra-WSB" kind="relationship" relationship="viewControllers" id="gqU-cd-3cm"/>
                     </connections>
                 </tabBarController>
             </objects>
@@ -475,12 +587,13 @@
             <point key="canvasLocation" x="-251.14503816793894" y="110.56338028169014"/>
         </scene>
     </scenes>
-    <color key="tintColor" systemColor="systemBlueColor"/>
+    <color key="tintColor" systemColor="systemIndigoColor"/>
     <resources>
         <image name="Apple" width="24" height="24"/>
         <image name="Facebook" width="24" height="24"/>
         <image name="Google" width="24" height="24"/>
         <image name="airplane.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="arrow.down.heart.fill" catalog="system" width="128" height="107"/>
         <image name="gear.circle" catalog="system" width="128" height="123"/>
         <image name="gear.circle.fill" catalog="system" width="128" height="123"/>
         <image name="person.crop.rectangle" catalog="system" width="128" height="93"/>
