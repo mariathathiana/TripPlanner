@@ -9,7 +9,6 @@ import UIKit
 import FirebaseAuth
 import FirebaseCore
 import GoogleSignIn
-import FirebaseAuth
 import FirebaseFirestore
 
 class SignInViewController: UIViewController {
@@ -66,12 +65,12 @@ class SignInViewController: UIViewController {
               return
           }
 
-          guard let user = result?.user, let idToken = user.idToken?.tokenString else {
+          guard let googleUser = result?.user, let idToken = googleUser.idToken?.tokenString else {
                   showMessage(message: "Unxpected error has occurred.")
                   return
           }
 
-          let credential = GoogleAuthProvider.credential(withIDToken: idToken,accessToken: user.accessToken.tokenString)
+          let credential = GoogleAuthProvider.credential(withIDToken: idToken,accessToken: googleUser.accessToken.tokenString)
             
             Auth.auth().signIn(with: credential) { [unowned self] authResult, error in
                 if let error = error {
@@ -123,14 +122,9 @@ class SignInViewController: UIViewController {
                     }
                 }
             }
-                
-
-          // ...
         }
-    
-        
-      
     }
+    
     @IBAction func resetPassword(_ sender: Any){
         let email = usernameTextField.text ?? ""
         Auth.auth().sendPasswordReset(withEmail: email) { (error) in

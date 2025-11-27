@@ -13,6 +13,6 @@ struct User: Codable {
     let lastName: String
     let email: String
     let gender: Int
-    let birthDate: Int64
+    let birthDate: Int64?
     
 }
